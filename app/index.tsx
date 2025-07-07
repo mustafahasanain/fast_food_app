@@ -1,4 +1,4 @@
-import { offers } from "@/constants";
+import { images, offers } from "@/constants";
 import cn from "clsx";
 import { FlatList, Image, Pressable, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -8,7 +8,7 @@ import "./globals.css";
 
 export default function Index() {
   return (
-    <SafeAreaView>
+    <SafeAreaView className="flex-1 bg-white">
       <FlatList
         data={offers}
         renderItem={({ item, index }) => {
@@ -21,6 +21,7 @@ export default function Index() {
                   isEven ? "flex-row-reverse" : "flex-row"
                 )}
                 style={{ backgroundColor: item.color }}
+                android_ripple={{ color: "#fffff22" }}
               >
                 {({ pressed }) => (
                   <Fragment>
@@ -32,8 +33,21 @@ export default function Index() {
                       />
                     </View>
 
-                    <View className={"offer-card__info"}>
-                      <Text>{item.title}</Text>
+                    <View
+                      className={cn(
+                        "offer-card__info",
+                        isEven ? "pl-10" : "pr-10"
+                      )}
+                    >
+                      <Text className="h1-bold text-white leading-tight">
+                        {item.title}
+                      </Text>
+                      <Image
+                        source={images.arrowRight}
+                        className="size-10"
+                        resizeMode="contain"
+                        tintColor="#ffffff"
+                      />
                     </View>
                   </Fragment>
                 )}
@@ -41,6 +55,7 @@ export default function Index() {
             </View>
           );
         }}
+        contentContainerClassName="pb-28 px-5"
       />
     </SafeAreaView>
   );
