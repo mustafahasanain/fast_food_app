@@ -12,7 +12,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import CartButton from "@/components/CartButton";
 import { Fragment } from "react";
-import "./globals.css";
+import "../globals.css";
 
 export default function Index() {
   return (
